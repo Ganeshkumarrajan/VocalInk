@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.MaterialTheme
+import com.vocalInk.feature.voicetotext.VoiceToTextScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -1,0 +1,8 @@
+<resources>
+    <string name="did_not_catch_try_again">Did not catch that. Please try again.</string>
+    <string name="no_speech_input_try_again">No speech input. Try again.</string>
+    <string name="network_issue">No speech input. Try again.</string>
+    <string name="microphone_permission_required">Microphone permission needed.</string>
+    <string name="error_occurred">Error occurred:</string>
+    <string name="start_listening">Start Listening</string>
+</resources>
