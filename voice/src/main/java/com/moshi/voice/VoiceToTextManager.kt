@@ -68,10 +68,6 @@ class VoiceToTextManager @Inject constructor(
         speechRecognizer?.startListening(recognizerIntent)
     }
 
-    fun stopListening() {
-        speechRecognizer?.stopListening()
-    }
-
     fun destroy() {
         speechRecognizer?.destroy()
     }
