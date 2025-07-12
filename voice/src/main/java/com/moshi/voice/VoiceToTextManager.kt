@@ -21,6 +21,7 @@ class VoiceToTextManager @Inject constructor(
         onResult: (String) -> Unit, onError: (String) -> Unit,
         onEd: () -> (Unit)
     ) {
+        speechRecognizer?.destroy()
         if (speechRecognizer == null) {
             speechRecognizer = SpeechRecognizer.createSpeechRecognizer(context)
             recognizerIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
@@ -50,6 +51,7 @@ class VoiceToTextManager @Inject constructor(
                         SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS -> context.getString(R.string.microphone_permission_required)
                         else -> "${context.getString(R.string.error_occurred)} $error"
                     }
+
                     onError(error)
                 }
 
