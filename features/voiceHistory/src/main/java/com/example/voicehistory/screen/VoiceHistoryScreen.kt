@@ -9,7 +9,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -19,12 +18,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.voicehistory.R
-import com.example.voicehistory.viewModel.VoiceHistoryUI
-import com.example.voicehistory.viewModel.VoiceHistoryUiState
+import com.example.voicehistory.model.VoiceHistoryUI
+import com.example.voicehistory.model.VoiceHistoryUiState
 import com.example.voicehistory.viewModel.VoiceHistoryViewModel
+import com.moshi.vocalink.core.ui.components.VILoading
 import com.moshi.vocalink.core.ui.components.VoiceEntryCard
 import com.moshi.vocalink.core.ui.theme.VocalInkTheme
 import com.moshi.vocalink.core.ui.views.VIError
@@ -53,7 +54,10 @@ fun VoiceHistoryScreen(
 
 
 @Composable
-fun VoiceHistoryState(uiState: VoiceHistoryUiState<List<VoiceHistoryUI>>, modifier: Modifier) {
+private fun VoiceHistoryState(
+    uiState: VoiceHistoryUiState<List<VoiceHistoryUI>>,
+    modifier: Modifier
+) {
     when (uiState) {
         is VoiceHistoryUiState.Success -> {
             if (uiState.data.isEmpty()) {
@@ -74,7 +78,7 @@ fun VoiceHistoryState(uiState: VoiceHistoryUiState<List<VoiceHistoryUI>>, modifi
 }
 
 @Composable
-fun History(voices: List<VoiceHistoryUI>, modifier: Modifier) {
+private fun History(voices: List<VoiceHistoryUI>, modifier: Modifier) {
     LazyColumn(
         modifier = modifier.fillMaxSize(),
         contentPadding = PaddingValues(
@@ -92,24 +96,63 @@ fun History(voices: List<VoiceHistoryUI>, modifier: Modifier) {
     }
 }
 
-
 @Composable
-fun ShowEmptyList() {
+private fun ShowEmptyList() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         VITitleText(text = stringResource(R.string.empty_list))
     }
 }
 
 @Composable
-fun ShowError(message: String) {
+private fun ShowError(message: String) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         VIError(text = message)
     }
 }
 
 @Composable
-fun ShowIndicator() {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        CircularProgressIndicator()
-    }
+private fun ShowIndicator() {
+    VILoading()
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewVoiceHistoryScreen() {
+    VoiceHistoryState(
+        uiState = VoiceHistoryUiState.Success(
+            listOf(
+                VoiceHistoryUI("14 Jul 2025, 10:15 AM", "Hello world"),
+                VoiceHistoryUI("14 Jul 2025, 11:00 AM", "Another note")
+            )
+        ),
+        modifier = Modifier
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewEmptyList() {
+    VoiceHistoryState(
+        uiState = VoiceHistoryUiState.Success(emptyList()),
+        modifier = Modifier
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewLoading() {
+    VoiceHistoryState(
+        uiState = VoiceHistoryUiState.Loading,
+        modifier = Modifier
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewError() {
+    VoiceHistoryState(
+        uiState = VoiceHistoryUiState.Error("Failed to load voice history."),
+        modifier = Modifier
+    )
 }

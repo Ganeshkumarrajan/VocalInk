@@ -1,6 +1,6 @@
 package com.example.domain.voice.usecase
 
-import com.example.domain.voice.mode.VoiceData
+import com.example.domain.voice.model.VoiceData
 import com.example.domain.voice.repository.VoiceRepository
 import java.util.Date
 import javax.inject.Inject

@@ -1,6 +1,6 @@
 package com.example.domain.voice.repository
 
-import com.example.domain.voice.mode.VoiceData
+import com.example.domain.voice.model.VoiceData
 import kotlinx.coroutines.flow.Flow
 
 interface VoiceRepository {

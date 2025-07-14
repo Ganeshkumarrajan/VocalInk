@@ -4,7 +4,7 @@ import android.util.Log
 import com.example.data.VoiceDao
 import com.example.data.voice.model.toDomain
 import com.example.data.voice.model.toEntity
-import com.example.domain.voice.mode.VoiceData
+import com.example.domain.voice.model.VoiceData
 import com.example.domain.voice.repository.VoiceRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
