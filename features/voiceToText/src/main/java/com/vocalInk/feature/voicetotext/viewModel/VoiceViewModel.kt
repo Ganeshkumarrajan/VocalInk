@@ -1,9 +1,7 @@
 package com.vocalInk.feature.voicetotext.viewModel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Logger
 import com.example.domain.voice.usecase.SaveVoiceTextUseCase
 import com.example.domain.timer.GetRemainingTimeUseCase
 import com.moshi.voice.VoiceToTextManager
@@ -52,7 +50,6 @@ class VoiceViewModel @Inject constructor(
 
         voiceToTextManager.startListening(
             onResult = { result ->
-                Log.d("NOTEE on result",result)
                 _uiState.update {
                     it.copy(
                         recognizedText = result,
@@ -62,7 +59,6 @@ class VoiceViewModel @Inject constructor(
                 }
             },
             onError = { error ->
-                Log.d("NOTEE on error",error)
                 updateError(error)
             },
             onEd = {
@@ -96,7 +92,6 @@ class VoiceViewModel @Inject constructor(
     }
 
     fun stopListening() {
-        Log.d("NOTEE on stopListening","ddd")
         _uiState.update {
             if (it.listeningState != RecognitionState.ERROR) {
                 it.copy(

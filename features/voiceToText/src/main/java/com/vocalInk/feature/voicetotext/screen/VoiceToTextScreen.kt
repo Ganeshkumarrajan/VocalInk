@@ -5,9 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -18,7 +16,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.moshi.vocalink.core.ui.views.VIError
@@ -28,7 +25,6 @@ import com.moshi.vocalink.core.ui.views.VIButton
 import com.moshi.vocalink.core.ui.views.VITimer
 import com.moshi.vocalink.core.ui.views.VITitleText
 import com.vocalInk.feature.voicetotext.R
-
 import com.vocalInk.feature.voicetotext.model.RecognitionState
 import com.vocalInk.feature.voicetotext.model.VoiceRecognitionUiState
 import com.vocalInk.feature.voicetotext.viewModel.VoiceViewModel
