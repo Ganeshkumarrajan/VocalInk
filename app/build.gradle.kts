@@ -103,4 +103,12 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.5.0")
     implementation(platform("androidx.compose:compose-bom:2024.05.00"))
     implementation(project(":features:voiceToText"))
+    implementation(project(":features:voiceHistory"))
+    implementation(project(":data"))
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation("androidx.compose.material3:material3-window-size-class:1.2.1")
+
+    // Accompanist Navigation Material for BottomSheetNavigator
+    implementation("com.google.accompanist:accompanist-navigation-material:0.34.0")
+
 }

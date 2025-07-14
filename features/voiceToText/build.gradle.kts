@@ -74,5 +74,6 @@ dependencies {
     implementation(libs.serialization.json)
     implementation(project(":voice"))
     implementation(project(":core_ui"))
+    implementation(project(":domain"))
 
 }
