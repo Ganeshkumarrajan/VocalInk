@@ -31,6 +31,6 @@ class VoiceHistoryViewModel @Inject constructor(private val getVoiceHistoryUseCa
             }.stateIn(
                 scope = viewModelScope,
                 initialValue = VoiceHistoryUiState.Loading,
-                started = SharingStarted.Eagerly
+                started = SharingStarted.WhileSubscribed(3000)
             )
 }
