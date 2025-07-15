@@ -7,7 +7,6 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.moshi.vocalink.core.ui.theme.VocalInkTheme
 
 @Composable
@@ -21,7 +20,7 @@ fun VILoading(
     ) {
         CircularProgressIndicator(
             color = VocalInkTheme.colors.secondary,
-            modifier = Modifier.size(30.dp)
+            modifier = Modifier.size(VocalInkTheme.dimens.smallSize)
         )
     }
 }

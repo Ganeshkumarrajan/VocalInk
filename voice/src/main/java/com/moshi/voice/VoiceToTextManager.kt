@@ -12,12 +12,12 @@ import javax.inject.Inject
 
 class VoiceToTextManager @Inject constructor(
     @ApplicationContext private val context: Context
-) {
+) : VoiceToTextInterface {
 
     private var speechRecognizer: SpeechRecognizer? = null
     private var recognizerIntent: Intent? = null
 
-    fun startListening(
+    override fun startListening(
         onResult: (String) -> Unit, onError: (String) -> Unit,
         onEd: () -> (Unit)
     ) {
@@ -68,7 +68,8 @@ class VoiceToTextManager @Inject constructor(
         speechRecognizer?.startListening(recognizerIntent)
     }
 
-    fun destroy() {
+
+    override fun destroy() {
         speechRecognizer?.destroy()
     }
 }

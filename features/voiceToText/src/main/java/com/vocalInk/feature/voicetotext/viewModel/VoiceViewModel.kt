@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.voice.usecase.SaveVoiceTextUseCase
 import com.example.domain.timer.GetRemainingTimeUseCase
+import com.moshi.voice.VoiceToTextInterface
 import com.moshi.voice.VoiceToTextManager
 import com.vocalInk.feature.voicetotext.model.RecognitionState
 import com.vocalInk.feature.voicetotext.model.VoiceRecognitionUiState
@@ -21,7 +22,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class VoiceViewModel @Inject constructor(
-    private val voiceToTextManager: VoiceToTextManager,
+    private val voiceToTextManager: VoiceToTextInterface,
     private val getRemainingTimeUseCase: GetRemainingTimeUseCase,
     private val saveVoiceTextUseCase: SaveVoiceTextUseCase
 ) : ViewModel() {

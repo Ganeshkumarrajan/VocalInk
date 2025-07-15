@@ -76,4 +76,16 @@ dependencies {
     implementation(project(":core_ui"))
     implementation(project(":domain"))
 
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+
+// For flow testing
+    testImplementation("app.cash.turbine:turbine:1.0.0")
+
+// Mocking
+    testImplementation("io.mockk:mockk:1.13.5")
+
+// JUnit
+    testImplementation("junit:junit:4.13.2")
+    testImplementation(kotlin("test"))
+
 }
