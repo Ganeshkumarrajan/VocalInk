@@ -32,12 +32,6 @@ object VoiceDatabaseModule {
     @Provides
     fun provideVoiceDao(db: VoiceDatabase): VoiceDao = db.voiceDataDao()
 
-    @Provides
-    fun provideVoiceHistoryRepository(dao: VoiceDao): VoiceRepository =
-        VoiceRepositoryImpl(dao)
 
-    @Provides
-    fun provideRemainingTimeRepository(): RemainingTimeRepository =
-        RemainingTimeRepositoryImpl()
 
 }

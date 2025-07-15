@@ -22,10 +22,10 @@ dependencyResolutionManagement {
 rootProject.name = "VocalInk"
 include(":app")
 include(":voice")
-include(":core_ui")
+include(":coreUI")
 include(":features:voiceToText")
 include(":data")
 include(":domain")
 include(":features:voiceHistory")
-include(":core_utils")
-include(":core")
+include(":coreUtils")
+

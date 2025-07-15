@@ -74,9 +74,9 @@ dependencies {
     implementation(libs.androidx.coroutines.core)
     implementation(libs.serialization.json)
     implementation(project(":voice"))
-    implementation(project(":core_ui"))
+    implementation(project(":coreUI"))
     implementation(project(":domain"))
-    implementation(project(":core_utils"))
+    implementation(project(":coreUtils"))
     implementation(project(":features:voiceToText"))
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
 

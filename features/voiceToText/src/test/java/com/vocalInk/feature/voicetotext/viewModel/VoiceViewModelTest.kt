@@ -46,7 +46,6 @@ class VoiceViewModelTest {
 
             viewModel.onSave("Test speech")
 
-            // Advance time to allow emit
             advanceUntilIdle()
 
             assertEquals(true, turbine.awaitItem())
