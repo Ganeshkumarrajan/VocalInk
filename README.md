@@ -20,7 +20,7 @@ VocalInk is a voice-to-text Android application that enables users to transcribe
 - **Material 3** – Design system
 - **Navigation Compose** – In-app navigation (including bottom sheet)
 - **Accompanist Navigation Material** – Modal bottom sheet support
-- **Custom UI Components** – `CocoText`, `CocoDropdown`, `VIError`, etc.
+- **Custom UI Components** – `VIText`, `VIError`, etc.
 
 ### 🧠 Architecture
 - **MVVM** – Model-View-ViewModel architecture
