@@ -1,6 +1,7 @@
 package com.vocalInk.feature.voicetotext.viewModel
 
 import app.cash.turbine.turbineScope
+import com.example.domain.voice.GetRemainingTimeUseCase
 import com.example.domain.voice.usecase.SaveVoiceTextUseCase
 import com.moshi.voice.VoiceToTextInterface
 import com.vocalInk.feature.voicetotext.model.RecognitionState

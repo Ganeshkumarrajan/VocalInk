@@ -23,8 +23,7 @@ import javax.inject.Inject
 class VoiceViewModel @Inject constructor(
     private val voiceToTextManager: VoiceToTextInterface,
     private val getRemainingTimeUseCase: GetRemainingTimeUseCase,
-    private val saveVoiceTextUseCase: SaveVoiceTextUseCase,
-    private val defaultTimerSeconds: Int = DEFAULT_TIMER_SECONDS
+    private val saveVoiceTextUseCase: SaveVoiceTextUseCase
 ) : ViewModel() {
     companion object {
         private const val DEFAULT_TIMER_SECONDS = 7
@@ -74,7 +73,7 @@ class VoiceViewModel @Inject constructor(
     private fun startTimer() {
         timerJob?.cancel()
         timerJob = viewModelScope.launch {
-            getRemainingTimeUseCase(defaultTimerSeconds).collect { result ->
+            getRemainingTimeUseCase(DEFAULT_TIMER_SECONDS).collect { result ->
                 result.onSuccess { seconds ->
                     updateTimerText(seconds)
                     if (seconds == 0) stopListening()

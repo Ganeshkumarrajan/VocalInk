@@ -3,8 +3,8 @@ package com.example.voicehistory.viewModel
 import app.cash.turbine.test
 import com.example.domain.voice.model.VoiceData
 import com.example.domain.voice.usecase.GetVoiceHistoryUseCase
+import com.example.voicehistory.mapper.toUI
 import com.example.voicehistory.model.VoiceHistoryUiState
-import com.example.voicehistory.model.toUI
 import io.mockk.every
 import io.mockk.mockk
 import junit.framework.TestCase.assertTrue
