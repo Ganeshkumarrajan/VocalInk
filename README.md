@@ -1,7 +1,7 @@
 # 🎙️ VocalInk
 
-**VocalInk** is a modern Android app that lets users convert voice to text and store it locally.  
-Built with **Jetpack Compose**, **Kotlin Flow**, **Clean Architecture**, and **Hilt**, it's designed to be testable, scalable, and developer-friendly.
+**VocalInk** is a modern Android app that converts voice to text and stores it locally.  
+Built using **Jetpack Compose**, **Kotlin Flow**, **Clean Architecture**, and **Hilt**, it is modular, testable, and developer-friendly.
 
 ---
 
@@ -10,10 +10,20 @@ Built with **Jetpack Compose**, **Kotlin Flow**, **Clean Architecture**, and **H
 - 🎤 Real-time voice-to-text transcription
 - ⏱️ Countdown timer while recording
 - 🗂️ Voice history screen with timestamps
-- 💾 Local persistence using Room
-- 🧪 Modular and testable architecture
-- 💉 Dependency Injection via Hilt
+- 💾 Offline support with Room DB
+- 🧪 Modular & testable architecture
+- 💉 Hilt-based dependency injection
 - ⚙️ Jetpack Compose UI with preview support
+
+---
+
+## 📷 Preview
+
+| Voice Input Screen | History Screen |
+|--------------------|----------------|
+| ![Voice Input](screenshots/voice_input.png) | ![History](screenshots/history.png) |
+
+> You can also record a GIF using Android Emulator or `ScreenToGif` and place it in the `screenshots/` folder.
 
 ---
 
@@ -21,28 +31,28 @@ Built with **Jetpack Compose**, **Kotlin Flow**, **Clean Architecture**, and **H
 
 | Module                     | Description |
 |---------------------------|-------------|
-| `app`                     | App entrypoint and navigation |
-| `feature/voicetotext`     | Voice recognition feature |
-| `feature/voicehistory`    | Voice history display feature |
-| `data/voice`              | Local storage with Room |
-| `data/timer`              | Countdown timer using Flow |
-| `domain/voice`            | Voice use cases & models |
-| `core/ui`                 | Shared UI components (buttons, cards, etc.) |
-| `core/utils`              | Utilities like formatting and error mapping |
+| `app`                     | App entry point and navigation setup |
+| `feature/voicetotext`     | Voice recognition feature (record + convert) |
+| `feature/voicehistory`    | Voice history listing screen |
+| `data/voice`              | Local Room DB for storing transcriptions |
+| `data/timer`              | Countdown timer logic using Flow |
+| `domain/voice`            | Domain layer: use cases and models |
+| `core/ui`                 | Shared Compose UI elements |
+| `core/utils`              | Utility functions (formatting, error mapping, etc.) |
 
 ---
 
 ## 📐 Architecture
 
-Follows **Clean Architecture** with modular boundaries:
+Based on **Clean Architecture** principles:
 
 ```text
-View (Compose)
+View (Jetpack Compose)
 ↓
 ViewModel (StateFlow)
 ↓
-UseCase (Domain)
+Use Case (Domain)
 ↓
 Repository (Data)
 ↓
-Local (Room) / Manager
+Data Source (Room, Manager)
