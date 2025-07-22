@@ -73,7 +73,7 @@ dependencies {
     implementation(libs.androidx.coroutines.core)
     implementation(libs.serialization.json)
     implementation(project(":voice"))
-    implementation(project(":coreUI"))
+    implementation(project(":core:UI"))
     implementation(project(":domain"))
 
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
