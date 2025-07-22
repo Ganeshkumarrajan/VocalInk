@@ -18,7 +18,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.voicehistory.R
@@ -27,7 +26,6 @@ import com.example.voicehistory.model.VoiceHistoryUiState
 import com.example.voicehistory.viewModel.VoiceHistoryViewModel
 import com.moshi.vocalink.core.ui.components.VILoading
 import com.moshi.vocalink.core.ui.components.VoiceEntryCard
-import com.moshi.vocalink.core.ui.theme.VocalInkTheme
 import com.moshi.vocalink.core.ui.theme.VocalInkThemeTokens
 import com.moshi.vocalink.core.ui.views.VIError
 import com.moshi.vocalink.core.ui.views.VITitleText

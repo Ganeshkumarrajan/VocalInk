@@ -15,7 +15,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
-import com.moshi.vocalink.core.ui.theme.VocalInkTheme
 import com.moshi.vocalink.core.ui.theme.VocalInkThemeTokens
 
 @Composable
