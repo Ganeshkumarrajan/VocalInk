@@ -19,10 +19,12 @@ import org.junit.After
 import org.junit.Before
 import kotlin.test.Test
 
-
+/**
+ * This ViewModel manages the state for voice recognition.
+ * It listens to microphone input and maps the result to UI state.
+ */
 @ExperimentalCoroutinesApi
 class VoiceViewModelTest {
-
     private lateinit var viewModel: VoiceViewModel
     private val voiceToTextManager = mockk<VoiceToTextInterface>(relaxed = true)
     private val getRemainingTimeUseCase = mockk<GetRemainingTimeUseCase>()
