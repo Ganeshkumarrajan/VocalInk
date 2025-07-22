@@ -5,6 +5,40 @@ Built using **Jetpack Compose**, **Kotlin Flow**, **Clean Architecture**, and **
 
 ---
 
+### 📱 Voice Recognition Flow
+
+**1. Home Screen**
+
+<img src="screenshots/1.png"  width="400"/>
+---
+
+**2. Start Listening Modal**
+
+<img src="screenshots/2.png"  width="400"/>
+
+---
+
+**3. Listening with Timer**
+
+<img src="screenshots/3.png"  width="400"/>
+
+---
+
+**4. First Voice Saved**
+
+<img src="screenshots/4.png"  width="400"/>
+
+---
+
+**5. Second Voice Saved**
+
+<img src="screenshots/5.png"  width="400"/>
+
+---
+**5. on error
+
+<img src="screenshots/6.png"  width="400"/>
+
 ## ✨ Features
 
 - 🎤 Real-time voice-to-text transcription
@@ -57,38 +91,3 @@ Repository (Data)
 ↓
 Data Source (Room, Manager)
 
-
-### 📱 Voice Recognition Flow
-
-**1. Home Screen**
-
-![Home](screenshots/1.png)
-
----
-
-**2. Start Listening Modal**
-
-![Start](screenshots/2.png)
-
----
-
-**3. Listening with Timer**
-
-![Listening](screenshots/3.png)
-
----
-
-**4. First Voice Saved**
-
-![Saved 1](screenshots/4.png)
-
----
-
-**5. Second Voice Saved**
-
-![Saved 2](screenshots/5.png)
-
----
-**5. on error
-
-![on error](6.pnfg)
