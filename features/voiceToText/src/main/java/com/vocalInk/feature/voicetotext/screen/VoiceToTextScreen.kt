@@ -53,12 +53,6 @@ fun VoiceToTextScreen(
         }
     }
 
-    DisposableEffect(Unit) {
-        onDispose {
-
-        }
-    }
-
     VoiceToTextState(
         uiState = uiState,
         onClick = voiceViewModel::startListening,
@@ -89,8 +83,7 @@ fun VoiceToTextState(
                 ShowButton(onClick)
             }
         }
-
-        else -> {
+        RecognitionState.IDLE -> {
             ShowButton(onClick)
         }
     }
@@ -98,10 +91,12 @@ fun VoiceToTextState(
 
 @Composable
 fun ShowButton(onClick: () -> Unit) {
-    VIButton(
-        onClick = onClick,
-        text = stringResource(R.string.start)
-    )
+    BaseStateContainer {
+        VIButton(
+            onClick = onClick,
+            text = stringResource(R.string.start)
+        )
+    }
 }
 
 @Composable

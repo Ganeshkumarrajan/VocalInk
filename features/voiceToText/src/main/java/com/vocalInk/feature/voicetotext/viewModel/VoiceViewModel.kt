@@ -45,7 +45,6 @@ class VoiceViewModel @Inject constructor(
     }
 
     fun startListening() {
-        if (_uiState.value.listeningState == RecognitionState.LISTENING) return
 
         _uiState.update { it.copy(listeningState = RecognitionState.LISTENING) }
 
@@ -96,12 +95,12 @@ class VoiceViewModel @Inject constructor(
         _uiState.update {
             if (it.listeningState != RecognitionState.ERROR) {
                 it.copy(
-                    recognizedText = null,
                     errorText = null,
                     listeningState = RecognitionState.FINISHED
                 )
             } else it
         }
+
         reset()
     }
 

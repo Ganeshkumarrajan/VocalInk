@@ -56,3 +56,39 @@ Use Case (Domain)
 Repository (Data)
 ↓
 Data Source (Room, Manager)
+
+
+### 📱 Voice Recognition Flow
+
+**1. Home Screen**
+
+![Home](screenshots/1.png)
+
+---
+
+**2. Start Listening Modal**
+
+![Start](screenshots/2.png)
+
+---
+
+**3. Listening with Timer**
+
+![Listening](screenshots/3.png)
+
+---
+
+**4. First Voice Saved**
+
+![Saved 1](screenshots/4.png)
+
+---
+
+**5. Second Voice Saved**
+
+![Saved 2](screenshots/5.png)
+
+---
+**5. on error
+
+![on error](6.pnfg)
