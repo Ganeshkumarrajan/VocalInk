@@ -1,51 +1,48 @@
-# 🎤 VocalInk
+# 🎙️ VocalInk
 
-VocalInk is a voice-to-text Android application that enables users to transcribe spoken input into text and save it for later reference. Built with modern Android development practices, it emphasizes Clean Architecture, reactive programming, and testability.
+**VocalInk** is a modern Android app that lets users convert voice to text and store it locally.  
+Built with **Jetpack Compose**, **Kotlin Flow**, **Clean Architecture**, and **Hilt**, it's designed to be testable, scalable, and developer-friendly.
+
+---
 
 ## ✨ Features
 
-- 🎙️ Real-time voice recognition using Android's `SpeechRecognizer`
-- 💾 Persistent storage of transcribed voice notes
-- 📜 View and manage voice history
-- 🧪 Unit-tested ViewModels and domain logic
-- 🎨 Modern UI with Jetpack Compose
-- 📦 Modular and maintainable architecture
+- 🎤 Real-time voice-to-text transcription
+- ⏱️ Countdown timer while recording
+- 🗂️ Voice history screen with timestamps
+- 💾 Local persistence using Room
+- 🧪 Modular and testable architecture
+- 💉 Dependency Injection via Hilt
+- ⚙️ Jetpack Compose UI with preview support
 
 ---
 
-## 🧱 Tech Stack
+## 🧩 Modules Overview
 
-### 🖼️ UI
-- **Jetpack Compose** – Declarative UI framework
-- **Material 3** – Design system
-- **Navigation Compose** – In-app navigation (including bottom sheet)
-- **Accompanist Navigation Material** – Modal bottom sheet support
-- **Custom UI Components** – `VIText`, `VIError`, etc.
-
-### 🧠 Architecture
-- **MVVM** – Model-View-ViewModel architecture
-- **Clean Architecture** – Separation of concerns (domain, data, presentation)
-- **Hilt** – Dependency Injection
-- **StateFlow & SharedFlow** – Reactive state management
-
-### 🗂️ Data & Persistence
-- **Room** – Local SQLite DB for storing voice notes
-- **Repository Pattern** – Abstract data sources
-
-### 🗣️ Voice Recognition
-- **SpeechRecognizer API** – Built-in Android voice recognition
-- **VoiceToTextManager (custom)** – Manages speech input lifecycle
-
-### ⚙️ Background & Threading
-- **Kotlin Coroutines** – Asynchronous programming
-- **Dispatchers (with Qualifiers)** – Injected to control coroutine context
-
-### 🧪 Testing
-- **JUnit** – Unit testing
-- **Turbine** – Flow testing
-- **MockK** – Mocking dependencies
-- **Hilt Testing** – Injecting test modules
+| Module                     | Description |
+|---------------------------|-------------|
+| `app`                     | App entrypoint and navigation |
+| `feature/voicetotext`     | Voice recognition feature |
+| `feature/voicehistory`    | Voice history display feature |
+| `data/voice`              | Local storage with Room |
+| `data/timer`              | Countdown timer using Flow |
+| `domain/voice`            | Voice use cases & models |
+| `core/ui`                 | Shared UI components (buttons, cards, etc.) |
+| `core/utils`              | Utilities like formatting and error mapping |
 
 ---
 
-## 🏗️ Modules
+## 📐 Architecture
+
+Follows **Clean Architecture** with modular boundaries:
+
+```text
+View (Compose)
+↓
+ViewModel (StateFlow)
+↓
+UseCase (Domain)
+↓
+Repository (Data)
+↓
+Local (Room) / Manager
