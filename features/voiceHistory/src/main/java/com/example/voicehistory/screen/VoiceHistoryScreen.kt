@@ -28,6 +28,7 @@ import com.example.voicehistory.viewModel.VoiceHistoryViewModel
 import com.moshi.vocalink.core.ui.components.VILoading
 import com.moshi.vocalink.core.ui.components.VoiceEntryCard
 import com.moshi.vocalink.core.ui.theme.VocalInkTheme
+import com.moshi.vocalink.core.ui.theme.VocalInkThemeTokens
 import com.moshi.vocalink.core.ui.views.VIError
 import com.moshi.vocalink.core.ui.views.VITitleText
 
@@ -42,7 +43,10 @@ fun VoiceHistoryScreen(
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(onClick = onAddVoice) {
-                Icon(Icons.Default.Add, contentDescription = "Add")
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = stringResource(R.string.add_voice)
+                )
             }
         }
     ) { innerPadding ->
@@ -52,29 +56,18 @@ fun VoiceHistoryScreen(
     }
 }
 
-
 @Composable
-private fun VoiceHistoryState(
+internal fun VoiceHistoryState(
     uiState: VoiceHistoryUiState<List<VoiceHistoryUI>>,
     modifier: Modifier
-) {
-    when (uiState) {
-        is VoiceHistoryUiState.Success -> {
-            if (uiState.data.isEmpty()) {
-                ShowEmptyList()
-            } else {
-                History(uiState.data, modifier)
-            }
-        }
-
-        is VoiceHistoryUiState.Error -> {
-            ShowError(uiState.errorMessage)
-        }
-
-        is VoiceHistoryUiState.Loading -> {
-            ShowIndicator()
-        }
+) = when (uiState) {
+    is VoiceHistoryUiState.Success -> {
+        if (uiState.data.isEmpty()) VoiceHistoryEmptyState()
+        else History(uiState.data, modifier)
     }
+
+    is VoiceHistoryUiState.Error -> VoiceHistoryErrorState(uiState.errorMessage)
+    is VoiceHistoryUiState.Loading -> VoiceHistoryLoadingState()
 }
 
 @Composable
@@ -82,10 +75,10 @@ private fun History(voices: List<VoiceHistoryUI>, modifier: Modifier) {
     LazyColumn(
         modifier = modifier.fillMaxSize(),
         contentPadding = PaddingValues(
-            horizontal = VocalInkTheme.dimens.ScreenPadding,
-            vertical = VocalInkTheme.dimens.Small
+            horizontal = VocalInkThemeTokens.dimens.ScreenPadding,
+            vertical = VocalInkThemeTokens.dimens.Small
         ),
-        verticalArrangement = Arrangement.spacedBy(VocalInkTheme.dimens.ScreenPadding)
+        verticalArrangement = Arrangement.spacedBy(VocalInkThemeTokens.dimens.ScreenPadding)
     ) {
         items(voices) { item ->
             VoiceEntryCard(
@@ -97,62 +90,20 @@ private fun History(voices: List<VoiceHistoryUI>, modifier: Modifier) {
 }
 
 @Composable
-private fun ShowEmptyList() {
+private fun VoiceHistoryEmptyState() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         VITitleText(text = stringResource(R.string.empty_list))
     }
 }
 
 @Composable
-private fun ShowError(message: String) {
+private fun VoiceHistoryErrorState(message: String) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         VIError(text = message)
     }
 }
 
 @Composable
-private fun ShowIndicator() {
+private fun VoiceHistoryLoadingState() {
     VILoading()
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewVoiceHistoryScreen() {
-    VoiceHistoryState(
-        uiState = VoiceHistoryUiState.Success(
-            listOf(
-                VoiceHistoryUI("14 Jul 2025, 10:15 AM", "Hello world"),
-                VoiceHistoryUI("14 Jul 2025, 11:00 AM", "Another note")
-            )
-        ),
-        modifier = Modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewEmptyList() {
-    VoiceHistoryState(
-        uiState = VoiceHistoryUiState.Success(emptyList()),
-        modifier = Modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewLoading() {
-    VoiceHistoryState(
-        uiState = VoiceHistoryUiState.Loading,
-        modifier = Modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewError() {
-    VoiceHistoryState(
-        uiState = VoiceHistoryUiState.Error("Failed to load voice history."),
-        modifier = Modifier
-    )
 }

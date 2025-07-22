@@ -2,10 +2,9 @@ package com.vocalInk.feature.voicetotext.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.domain.voice.GetRemainingTimeUseCase
 import com.example.domain.voice.usecase.SaveVoiceTextUseCase
-import com.example.domain.timer.GetRemainingTimeUseCase
 import com.moshi.voice.VoiceToTextInterface
-import com.moshi.voice.VoiceToTextManager
 import com.vocalInk.feature.voicetotext.model.RecognitionState
 import com.vocalInk.feature.voicetotext.model.VoiceRecognitionUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,9 +23,9 @@ import javax.inject.Inject
 class VoiceViewModel @Inject constructor(
     private val voiceToTextManager: VoiceToTextInterface,
     private val getRemainingTimeUseCase: GetRemainingTimeUseCase,
-    private val saveVoiceTextUseCase: SaveVoiceTextUseCase
+    private val saveVoiceTextUseCase: SaveVoiceTextUseCase,
+    private val defaultTimerSeconds: Int = DEFAULT_TIMER_SECONDS
 ) : ViewModel() {
-
     companion object {
         private const val DEFAULT_TIMER_SECONDS = 7
     }
@@ -47,6 +46,8 @@ class VoiceViewModel @Inject constructor(
     }
 
     fun startListening() {
+        if (_uiState.value.listeningState == RecognitionState.LISTENING) return
+
         _uiState.update { it.copy(listeningState = RecognitionState.LISTENING) }
 
         voiceToTextManager.startListening(
@@ -54,8 +55,8 @@ class VoiceViewModel @Inject constructor(
                 _uiState.update {
                     it.copy(
                         recognizedText = result,
-                        errorText = null, // clear error on success
-                        listeningState = RecognitionState.FINISHED // optional if you want a separate state
+                        errorText = null,
+                        listeningState = RecognitionState.FINISHED
                     )
                 }
             },
@@ -73,7 +74,7 @@ class VoiceViewModel @Inject constructor(
     private fun startTimer() {
         timerJob?.cancel()
         timerJob = viewModelScope.launch {
-            getRemainingTimeUseCase(DEFAULT_TIMER_SECONDS).collect { result ->
+            getRemainingTimeUseCase(defaultTimerSeconds).collect { result ->
                 result.onSuccess { seconds ->
                     updateTimerText(seconds)
                     if (seconds == 0) stopListening()
@@ -98,7 +99,8 @@ class VoiceViewModel @Inject constructor(
                 it.copy(
                     recognizedText = null,
                     errorText = null,
-                    listeningState = RecognitionState.FINISHED)
+                    listeningState = RecognitionState.FINISHED
+                )
             } else it
         }
         reset()
@@ -121,5 +123,7 @@ class VoiceViewModel @Inject constructor(
         super.onCleared()
         reset()
         voiceToTextManager.destroy()
+        timerJob = null
     }
+
 }

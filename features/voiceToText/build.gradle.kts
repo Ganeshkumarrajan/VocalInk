@@ -36,7 +36,7 @@ android {
 }
 
 dependencies {
-    implementation(platform("androidx.compose:compose-bom:2024.05.00"))
+    implementation(libs.androidx.compose.bom)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -72,20 +72,21 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.coroutines.core)
     implementation(libs.serialization.json)
-    implementation(project(":voice"))
-    implementation(project(":core:UI"))
-    implementation(project(":domain"))
+    implementation(project(":core:voice"))
+    implementation(project(":core:ui"))
+    implementation(project(":domain:timer"))
+    implementation(project(":domain:voice"))
 
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation(libs.kotlinx.coroutines.test)
 
 // For flow testing
-    testImplementation("app.cash.turbine:turbine:1.0.0")
+    testImplementation(libs.turbine)
 
 // Mocking
-    testImplementation("io.mockk:mockk:1.13.5")
+    testImplementation(libs.mockk)
 
 // JUnit
-    testImplementation("junit:junit:4.13.2")
+    testImplementation(libs.junit)
     testImplementation(kotlin("test"))
 
 }

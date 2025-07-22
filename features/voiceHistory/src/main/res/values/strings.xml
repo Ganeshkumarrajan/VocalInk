@@ -1,3 +1,4 @@
 <resources>
     <string name="empty_list">Add new voice</string>
+    <string name="add_voice">Add voice</string>
 </resources>

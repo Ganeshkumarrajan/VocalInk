@@ -73,24 +73,25 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.coroutines.core)
     implementation(libs.serialization.json)
-    implementation(project(":voice"))
-    implementation(project(":core:UI"))
-    implementation(project(":domain"))
+    implementation(project(":core:voice"))
+    implementation(project(":core:ui"))
+    implementation(project(":domain:timer"))
+    implementation(project(":domain:voice"))
     implementation(project(":core:utils"))
     implementation(project(":features:voiceToText"))
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
 // For coroutine testing
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation(libs.kotlinx.coroutines.test)
 
 // For flow testing
-    testImplementation("app.cash.turbine:turbine:1.0.0")
+    testImplementation(libs.turbine)
 
 // Mocking
-    testImplementation("io.mockk:mockk:1.13.5")
+    testImplementation(libs.mockk)
 
 // JUnit
-    testImplementation("junit:junit:4.13.2")
+    testImplementation(libs.junit)
     testImplementation(kotlin("test"))
 
 }
