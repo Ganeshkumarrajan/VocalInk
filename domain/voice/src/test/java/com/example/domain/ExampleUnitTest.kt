@@ -1,4 +1,4 @@
-package com.moshi.vocalink
+package com.example.domain
 
 import org.junit.Test
 
