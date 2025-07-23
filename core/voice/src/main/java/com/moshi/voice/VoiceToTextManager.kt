@@ -30,7 +30,7 @@ class VoiceToTextManager @Inject constructor(
      *
      * @param onResult Callback with recognized text when successful.
      * @param onError Callback with user-friendly error message.
-     * @param onEd Callback when speech input ends.
+     * @param onEnd Callback when speech input ends.
      */
     override fun startListening(
         onResult: (String) -> Unit,
