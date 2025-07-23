@@ -17,9 +17,6 @@ It is built using Jetpack Compose, Kotlin Flow, Clean Architecture, and Hilt, ma
 > Note: Microphone permission is required to use the voice recording feature. If denied, the app will display a message prompting you to enable it.
 
 ---
-
-## Screenshots
-
 ## Screenshots
 
 <p align="center">
