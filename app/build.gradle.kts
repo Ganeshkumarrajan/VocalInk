@@ -109,5 +109,5 @@ dependencies {
 
     // Accompanist Navigation Material for BottomSheetNavigator
     implementation(libs.accompanist.navigation.material)
-
+    implementation("androidx.compose.material:material-navigation:1.0.0-alpha04") // or latest version
 }

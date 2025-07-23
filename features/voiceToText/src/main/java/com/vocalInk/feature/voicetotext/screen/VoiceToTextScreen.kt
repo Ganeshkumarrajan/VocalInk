@@ -30,6 +30,12 @@ import com.vocalInk.feature.voicetotext.viewModel.VoiceViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+/**
+ * Main screen for voice-to-text input. Displays appropriate UI based on recognition state.
+ *
+ * @param voiceViewModel ViewModel that manages the recognition state and actions.
+ * @param onFinish Callback triggered when the voice input is saved and the sheet should close.
+ */
 @Composable
 fun VoiceToTextScreen(
     voiceViewModel: VoiceViewModel = hiltViewModel(),
@@ -38,6 +44,7 @@ fun VoiceToTextScreen(
     val uiState by voiceViewModel.uiState.collectAsStateWithLifecycle()
     val lifecycleOwner = LocalLifecycleOwner.current
 
+    // Automatically listen to close signal when state indicates save is complete
     DisposableEffect(Unit) {
         val job = lifecycleOwner.lifecycleScope.launch {
             lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -60,6 +67,13 @@ fun VoiceToTextScreen(
     )
 }
 
+/**
+ * Renders the voice recognition state and displays the appropriate UI.
+ *
+ * @param uiState The current state of the voice recognition process.
+ * @param onClick Triggered when the user starts or retries voice recognition.
+ * @param onSaveClicked Triggered when the user saves a finished voice input.
+ */
 @Composable
 fun VoiceToTextState(
     uiState: VoiceRecognitionUiState,
@@ -83,6 +97,7 @@ fun VoiceToTextState(
                 ShowButton(onClick)
             }
         }
+
         RecognitionState.IDLE -> {
             ShowButton(onClick)
         }

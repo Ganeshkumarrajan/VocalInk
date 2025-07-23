@@ -16,10 +16,22 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import javax.inject.Inject
 
+/**
+ * ViewModel responsible for exposing the voice history UI state.
+ *
+ * @param getVoiceHistoryUseCase Use case that provides a Flow of [VoiceData] history entries.
+ */
 @HiltViewModel
 class VoiceHistoryViewModel @Inject constructor(getVoiceHistoryUseCase: GetVoiceHistoryUseCase) :
     ViewModel() {
 
+    /**
+     * UI state representing the current voice history screen state.
+     * Emits:
+     * - [VoiceHistoryUiState.Loading] initially
+     * - [VoiceHistoryUiState.Success] with transformed UI data
+     * - [VoiceHistoryUiState.Error] if an exception is thrown
+     */
     val historyState: StateFlow<VoiceHistoryUiState<List<VoiceHistoryUI>>> =
         getVoiceHistoryUseCase.invoke()
             .map<List<VoiceData>, VoiceHistoryUiState<List<VoiceHistoryUI>>> {
@@ -32,4 +44,3 @@ class VoiceHistoryViewModel @Inject constructor(getVoiceHistoryUseCase: GetVoice
                 started = SharingStarted.WhileSubscribed(3000)
             )
 }
-
