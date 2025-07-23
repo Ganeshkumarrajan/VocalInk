@@ -23,9 +23,11 @@ It is built using Jetpack Compose, Kotlin Flow, Clean Architecture, and Hilt, ma
   <img src="screenshots/1.png" width="160"/>
   <img src="screenshots/2.png" width="160"/>
   <img src="screenshots/3.png" width="160"/>
+  <img src="screenshots/3.1.png" width="160"/>
   <img src="screenshots/4.png" width="160"/>
   <img src="screenshots/5.png" width="160"/>
   <img src="screenshots/6.png" width="160"/>
+  <img src="screenshots/6.1.png" width="160"/>
 </p>
 
 ---
