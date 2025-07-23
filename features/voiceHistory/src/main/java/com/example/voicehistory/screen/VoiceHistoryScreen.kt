@@ -89,7 +89,12 @@ private fun History(voices: List<VoiceHistoryUI>, modifier: Modifier) {
 
 @Composable
 private fun VoiceHistoryEmptyState() {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+    Box(
+        modifier = Modifier
+            .padding(VocalInkThemeTokens.dimens.ScreenPadding)
+            .fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
         VITitleText(text = stringResource(R.string.empty_list))
     }
 }
