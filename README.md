@@ -51,15 +51,6 @@ Built using **Jetpack Compose**, **Kotlin Flow**, **Clean Architecture**, and **
 
 ---
 
-## 📷 Preview
-
-| Voice Input Screen | History Screen |
-|--------------------|----------------|
-| ![Voice Input](screenshots/voice_input.png) | ![History](screenshots/history.png) |
-
-> You can also record a GIF using Android Emulator or `ScreenToGif` and place it in the `screenshots/` folder.
-
----
 
 ## 🧩 Modules Overview
 
