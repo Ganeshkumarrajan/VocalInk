@@ -1,84 +1,65 @@
-# 🎙️ VocalInk
+# VocalInk
 
-**VocalInk** is a modern Android app that converts voice to text and stores it locally.  
-Built using **Jetpack Compose**, **Kotlin Flow**, **Clean Architecture**, and **Hilt**, it is modular, testable, and developer-friendly.
-
----
-
-### 📱 Voice Recognition Flow
-
-**1. Home Screen**
-
-<img src="screenshots/1.png"  width="400"/>
----
-
-**2. Start Listening Modal**
-
-<img src="screenshots/2.png"  width="400"/>
+VocalInk is a modern Android app that converts voice into text and stores it locally.  
+It is built using Jetpack Compose, Kotlin Flow, Clean Architecture, and Hilt, making it modular, maintainable, and easy to extend.
 
 ---
 
-**3. Listening with Timer**
+## How to Use the App
 
-<img src="screenshots/3.png"  width="400"/>
+- On launch, the app requests microphone permission.
+- Grant the permission to enable voice recording.
+- Tap the floating mic button to open the voice input screen.
+- Speak while the countdown timer runs.
+- Your voice will be transcribed and saved to the history screen.
+- View and manage all saved voice notes from the history screen. Everything works offline.
 
----
-
-**4. First Voice Saved**
-
-<img src="screenshots/4.png"  width="400"/>
-
----
-
-**5. Second Voice Saved**
-
-<img src="screenshots/5.png"  width="400"/>
-
----
-**5. on error
-
-<img src="screenshots/6.png"  width="400"/>
-
-## ✨ Features
-
-- 🎤 Real-time voice-to-text transcription
-- ⏱️ Countdown timer while recording
-- 🗂️ Voice history screen with timestamps
-- 💾 Offline support with Room DB
-- 🧪 Modular & testable architecture
-- 💉 Hilt-based dependency injection
-- ⚙️ Jetpack Compose UI with preview support
+> Note: Microphone permission is required to use the voice recording feature. If denied, the app will display a message prompting you to enable it.
 
 ---
 
+## Screenshots
 
-## 🧩 Modules Overview
+## Screenshots
 
-| Module                     | Description |
-|---------------------------|-------------|
-| `app`                     | App entry point and navigation setup |
-| `feature/voicetotext`     | Voice recognition feature (record + convert) |
-| `feature/voicehistory`    | Voice history listing screen |
-| `data/voice`              | Local Room DB for storing transcriptions |
-| `data/timer`              | Countdown timer logic using Flow |
-| `domain/voice`            | Domain layer: use cases and models |
-| `core/ui`                 | Shared Compose UI elements |
-| `core/utils`              | Utility functions (formatting, error mapping, etc.) |
+<p align="center">
+  <img src="screenshots/1.png" width="160"/>
+  <img src="screenshots/2.png" width="160"/>
+  <img src="screenshots/3.png" width="160"/>
+  <img src="screenshots/4.png" width="160"/>
+  <img src="screenshots/5.png" width="160"/>
+  <img src="screenshots/6.png" width="160"/>
+</p>
 
 ---
 
-## 📐 Architecture
+## Features
 
-Based on **Clean Architecture** principles:
+- Real-time voice-to-text transcription
+- Countdown timer during recording
+- Voice history with timestamps
+- Offline support using Room database
+- Modular and testable codebase
+- Hilt-based dependency injection
+- Built with Jetpack Compose UI
 
-```text
-View (Jetpack Compose)
-↓
-ViewModel (StateFlow)
-↓
-Use Case (Domain)
-↓
-Repository (Data)
-↓
-Data Source (Room, Manager)
+---
 
+## Modules Overview
+
+| Module                   | Description                                     |
+|--------------------------|-------------------------------------------------|
+| `app`                    | App entry point and navigation setup            |
+| `feature/voicetotext`    | Voice recording and transcription logic         |
+| `feature/voicehistory`   | Screen for displaying saved voice entries       |
+| `data/voice`             | Room database for storing transcriptions        |
+| `data/timer`             | Countdown timer logic using Kotlin Flow         |
+| `domain/voice`           | Domain models and use cases                     |
+| `core/ui`                | Shared Jetpack Compose UI components            |
+| `core/utils`             | Utility functions and error formatting          |
+
+---
+
+## Architecture
+
+The app follows **Clean Architecture** principles, promoting separation of concerns and testability:
