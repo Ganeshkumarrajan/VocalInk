@@ -76,7 +76,7 @@ class VoiceViewModel @Inject constructor(
             onError = { error ->
                 updateError(error)
             },
-            onEd = {
+            onEnd = {
                 stopListening()
             }
         )
