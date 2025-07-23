@@ -19,12 +19,22 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel for managing voice-to-text recognition and timer logic.
+ *
+ * Responsibilities:
+ * - Starts and stops voice recognition via [VoiceToTextInterface]
+ * - Emits UI state updates through [uiState]
+ * - Starts a countdown timer using [getRemainingTimeUseCase]
+ * - Emits a close event through [closeOnSave] once text is saved
+ */
 @HiltViewModel
 class VoiceViewModel @Inject constructor(
     private val voiceToTextManager: VoiceToTextInterface,
     private val getRemainingTimeUseCase: GetRemainingTimeUseCase,
     private val saveVoiceTextUseCase: SaveVoiceTextUseCase
 ) : ViewModel() {
+
     companion object {
         private const val DEFAULT_TIMER_SECONDS = 7
     }
@@ -37,15 +47,20 @@ class VoiceViewModel @Inject constructor(
     private val _closeOnSave = MutableSharedFlow<Boolean>()
     val closeOnSave: SharedFlow<Boolean> = _closeOnSave.asSharedFlow()
 
+    /**
+     * Saves the recognized voice text and emits a close signal to the screen.
+     */
     fun onSave(voiceText: String) {
         viewModelScope.launch {
-            saveVoiceTextUseCase.invoke(voiceText)
+            saveVoiceTextUseCase(voiceText)
             _closeOnSave.emit(true)
         }
     }
 
+    /**
+     * Starts the voice recognition process and begins the timer countdown.
+     */
     fun startListening() {
-
         _uiState.update { it.copy(listeningState = RecognitionState.LISTENING) }
 
         voiceToTextManager.startListening(
@@ -61,7 +76,7 @@ class VoiceViewModel @Inject constructor(
             onError = { error ->
                 updateError(error)
             },
-            onEd = {
+            onEnd = {
                 stopListening()
             }
         )
@@ -77,7 +92,7 @@ class VoiceViewModel @Inject constructor(
                     updateTimerText(seconds)
                     if (seconds == 0) stopListening()
                 }.onFailure { error ->
-                    updateError(error.localizedMessage ?: "Unknown error")
+                    updateError(error.localizedMessage ?: "An unexpected error occurred.")
                 }
             }
         }
@@ -91,6 +106,9 @@ class VoiceViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Stops the recognition and transitions to FINISHED unless already in ERROR state.
+     */
     fun stopListening() {
         _uiState.update {
             if (it.listeningState != RecognitionState.ERROR) {
@@ -117,11 +135,13 @@ class VoiceViewModel @Inject constructor(
         timerJob?.cancel()
     }
 
+    /**
+     * Cleans up resources and cancels timer when ViewModel is destroyed.
+     */
     override fun onCleared() {
         super.onCleared()
         reset()
         voiceToTextManager.destroy()
         timerJob = null
     }
-
 }

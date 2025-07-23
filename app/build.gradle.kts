@@ -61,43 +61,25 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 
-// --- Lifecycle & Navigation ---
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.common.android)
     implementation(libs.androidx.navigation.runtime.android)
-
-// --- Paging ---
     implementation(libs.androidx.paging.compose)
     implementation(libs.androidx.paging.common.android)
-
-// --- Kotlin, Coroutines, Serialization ---
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.coroutines.core)
     implementation(libs.serialization.json)
-
-// --- Network (Retrofit, Logging, Result) ---
-    implementation(libs.network.retrofit)
-    implementation(libs.logging.interceptor)
-    implementation(libs.retrofit2.kotlinx.serialization.converter)
-    implementation(libs.retrofit.adapters.result)
-
-// --- Testing ---
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.turbine)
     testImplementation(kotlin("test"))
-
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
-
-// --- Optional Annotation Support ---
     implementation(libs.androidx.annotation)
-
-    //coil
-    implementation(libs.coil) // Core Coil
+    implementation(libs.coil)
     implementation(libs.coil.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(project(":features:voiceToText"))
@@ -107,7 +89,6 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.material3.window.size.class1)
 
-    // Accompanist Navigation Material for BottomSheetNavigator
     implementation(libs.accompanist.navigation.material)
-
+    implementation("androidx.compose.material:material-navigation:1.0.0-alpha04")
 }

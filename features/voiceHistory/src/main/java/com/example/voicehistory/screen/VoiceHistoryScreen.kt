@@ -30,6 +30,12 @@ import com.moshi.vocalink.core.ui.theme.VocalInkThemeTokens
 import com.moshi.vocalink.core.ui.views.VIError
 import com.moshi.vocalink.core.ui.views.VITitleText
 
+/**
+ * Displays the main Voice History screen with a FAB to add a new voice entry.
+ *
+ * @param historyViewModel ViewModel providing the state of voice history list.
+ * @param onAddVoice Callback triggered when the FAB is clicked.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun VoiceHistoryScreen(
@@ -54,6 +60,9 @@ fun VoiceHistoryScreen(
     }
 }
 
+/**
+ * Renders the appropriate UI based on the current [uiState] of the voice history screen.
+ */
 @Composable
 internal fun VoiceHistoryState(
     uiState: VoiceHistoryUiState<List<VoiceHistoryUI>>,
@@ -68,6 +77,9 @@ internal fun VoiceHistoryState(
     is VoiceHistoryUiState.Loading -> VoiceHistoryLoadingState()
 }
 
+/**
+ * Renders a list of voice history entries using [LazyColumn].
+ */
 @Composable
 private fun History(voices: List<VoiceHistoryUI>, modifier: Modifier) {
     LazyColumn(
@@ -87,6 +99,7 @@ private fun History(voices: List<VoiceHistoryUI>, modifier: Modifier) {
     }
 }
 
+/** Shown when the voice history list is empty. */
 @Composable
 private fun VoiceHistoryEmptyState() {
     Box(
@@ -99,6 +112,7 @@ private fun VoiceHistoryEmptyState() {
     }
 }
 
+/** Shown when the voice history screen encounters an error. */
 @Composable
 private fun VoiceHistoryErrorState(message: String) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -106,6 +120,7 @@ private fun VoiceHistoryErrorState(message: String) {
     }
 }
 
+/** Shown while voice history is being loaded. */
 @Composable
 private fun VoiceHistoryLoadingState() {
     VILoading()

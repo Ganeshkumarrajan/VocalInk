@@ -5,7 +5,7 @@ interface VoiceToTextInterface {
     fun startListening(
         onResult: (String) -> Unit,
         onError: (String) -> Unit,
-        onEd: () -> Unit
+        onEnd: () -> Unit
     )
 
     fun destroy()
